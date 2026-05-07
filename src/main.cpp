@@ -9,10 +9,12 @@ int main() {
     std::cerr << std::unitbuf;
 
     std::cout << "$ ";
-    std::cin >> command;
+    std::getline(std::cin, command);
     if(command.compare("exit") == 0) {
       break;
-    } else {
+    }else if(command.substr(0, 5) == "echo ") {
+      std::cout << command.substr(5) << "\n";
+    }else {
       std::cout << command << ": command not found\n";
     }
   }
